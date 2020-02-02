@@ -1,7 +1,7 @@
 import { config } from 'dotenv';
-config();
 import { Client, Message } from 'discord.js';
 import { prefix } from './config/config.json';
+config();
 
 const client: Client = new Client();
 
@@ -28,12 +28,18 @@ client.on('message', async (msg: Message) => {
   if(msg.content.startsWith(`${prefix}kick`)){
     const member = msg.mentions.members.first();
 
-    if(member && msg.member.hasPermission(['KICK_MEMBERS'])){
-      const removedMember = await msg.member.kick();
-      const { username } = removedMember.user;
-      msg.reply(`${username} has been removed from this channel`);
+    try{
+      if(member && msg.member.hasPermission(['KICK_MEMBERS'])){
+        msg.channel.send(`Are you sure to want remove ${msg.member.user.username}`)
+        
+        const removedMember = await msg.member.kick();
+        const { username } = removedMember.user;
+        msg.reply(`${username} has been removed from this channel`);
+      }
+    }catch(err){
+      return msg.reply('You not have permissions for that action');
     }
-    return msg.reply('You not have permissions for that action');
+    
   }
 
   if(msg.content.startsWith(`${prefix}cleanAll`)){
