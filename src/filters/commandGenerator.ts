@@ -1,16 +1,21 @@
 import { Operation } from '../shared/operation';
 import { Command } from '../shared/command';
+import { Message } from 'discord.js';
 
 export class CommandGenerator implements Operation {
-  public execute (command: string): Command {
+  public execute (command: Message): Command {
     // remove prefix
-    const preFormatCommand = command.substr(1);
+    const preFormatCommand = command.content.substr(1);
 
     // split command
     const splitedCommand = preFormatCommand.split(' ');
     const commandId = splitedCommand[0];
     splitedCommand.shift();
-    const argumentsList = splitedCommand;
-    return {commandId, argumentsList}
+    
+    return {
+      commandId,
+      argumentsList: splitedCommand,
+      message: command
+    }
   }
 }
