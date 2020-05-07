@@ -12,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.5.1"
+    "discord.js": "^11.5.1",
+    "mongodb": "^3.5.7"
   },
   "devDependencies": {
     "@types/node": "^13.7.0",
