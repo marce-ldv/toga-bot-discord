@@ -1,9 +1,9 @@
 #Stage 1 - building
 FROM node:current-slim as build-deps
 WORKDIR ./src/usr/app
-COPY src/web/administrator/package.json yarn.lock ./
+COPY apps/control-panel/frontend/package.json apps/control-panel/frontend/yarn.lock ./
 RUN yarn
-COPY src/web/administrator .
+COPY apps/control-panel/frontend/ .
 RUN yarn build
 
 #Stage 2 - serving production
