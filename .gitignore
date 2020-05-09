@@ -5,3 +5,11 @@ build/
 .vscode
 .idea/
 coverage/
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Misc
+.DS_Store
