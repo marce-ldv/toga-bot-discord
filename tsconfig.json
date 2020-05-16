@@ -20,7 +20,7 @@
     "noImplicitThis": false,
     "strictNullChecks": false,
     "paths": {
-      "@shared/*": ["./src/shared/*"]
+      "@TogaBot/*": ["./src/*"]
     }
   },
   "include": [

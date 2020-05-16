@@ -25,5 +25,8 @@
     "build": "tsc -p tsconfig.release.json",
     "lint": "eslint . --ext .ts,.tsx",
     "test": "jest --coverage"
+  },
+  "dependencies": {
+    "uuid": "^8.0.0"
   }
 }
