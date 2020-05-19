@@ -2,21 +2,23 @@ import AggregateRoot from "@TogaBot/Shared/Domain/Aggregate/AggregateRoot";
 import CardId from "@TogaBot/gacha-w/Shared/Domain/Card/CardId";
 import CardProps from "@TogaBot/gacha-w/Card/Domain/CardProps";
 
-export default class Card extends AggregateRoot {
+export default class Card extends AggregateRoot<CardProps> {
   private readonly _cardId: CardId;
-  private readonly _cardProps: CardProps;
 
   get cardId(): CardId {
     return this._cardId;
   }
   get cardProps(): CardProps {
-    return this._cardProps;
+    return this.props;
   }
 
-  public constructor(uuid: CardId, cardProps: CardProps) {
+  public static create(id: CardId, props: CardProps) {
+    return new Card(id, props);
+  }
+
+  private constructor(uuid: CardId, cardProps: CardProps) {
     super();
-    this._cardProps = cardProps;
+    this.props = cardProps;
     this._cardId = uuid;
   }
-
 }

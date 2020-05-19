@@ -3,8 +3,8 @@ import { v1 as idGenerator } from 'uuid';
 export default class Uuid {
   protected uuid: string;
 
-  public constructor(uuid: string) {
-    this.uuid = uuid;
+  public constructor(uuid?: string) {
+    this.uuid = uuid ?? Uuid.random();
   }
 
   public getId(): string { return this.uuid; }
@@ -13,7 +13,7 @@ export default class Uuid {
     return this.uuid === other.uuid;
   }
 
-  public static random(): Uuid {
-    return new Uuid(idGenerator());
+  public static random(): string {
+    return idGenerator();
   }
 }
